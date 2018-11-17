@@ -379,13 +379,7 @@ let resetPassword = (req, res) => {
                 let expire = Date.parse(userdetail.expiresOn);
                 console.log(expire);
                 console.log(expire < now);
-                if (expire < now) {
-                    // res.status(401);
-                    //return to login page and try to send jwt token
-                    console.log('token expired');
-                    return res.status(401).redirect('http://todorealtime.tk/login');
-                }
-                else {
+               
                     let newToken = userdetail.token;
                     let newEmail = userdetail.email;
                     resetTokenModel.updateMany({ $and: [{ email: newEmail }, { token: newToken }] }, { confirmed: true })
@@ -401,7 +395,6 @@ let resetPassword = (req, res) => {
                             }
                         })
                         .catch((error) => console.log(error, 'database error'));
-                }
             } else {
                 console.log('user not found in reset password');
 
