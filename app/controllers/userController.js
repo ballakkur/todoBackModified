@@ -341,8 +341,8 @@ let forgotPassword = (req, res) => {
                 newResetToken.save()
                     .then((resetDetail) => {
                         // console.log(resetDetail);
-                        let baseUrl = `${appConfig.apiVersion}/users`;
-                        let resetEmail = `<a href='http://api.todorealtime.tk${baseUrl}/resetPassword/${userDetail.email}/${token}'>click here</a>`;
+                        //let baseUrl = `${appConfig.apiVersion}/users`;
+                        let resetEmail = `<a href='http://api.todorealtime.tk/api/v1/users/resetPassword/${userDetail.email}/${token}'>click here</a>`;
                         nodemailer.mailer({
                             firstName: userDetail.firstName,
                             email: userDetail.email,
